@@ -19,7 +19,8 @@ function startWebSocket(boolMode) {
   webSocket.onmessage = function (event) {
     onMessageHandler(JSON.parse(event.data));
   };
-  webSocket.onclose = function () {
+  webSocket.onclose = function (event) {
+    console.log(event,"error")
     toastr["error"]("WebSocket closed!");
     var $noSocketConnection = $('#noSocketConnection');
     $noSocketConnection.css("height", 'auto').css("visibility", 'visible')
